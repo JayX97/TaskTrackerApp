@@ -33,7 +33,7 @@ const handleSubmission = event => {
     tasks.push({ name: taskName, description: taskDescription, deadline: taskDeadline});
     
     render();
-}
+};
 
 //function to render tasks in the table
 const render = () => {
@@ -46,11 +46,17 @@ const render = () => {
         <td><button onclick="markTaskComplete(this)">Complete</button></td>
         <td><button onclick="removeTask(this)">Remove</button></td>
     `).join('');
-}
+};
 
 //function to initialize the table
 const init = () => {
     taskTable.innerHTML = ''; //clear the table
     tasks = []; //resets the tasks array
     render(); //call the render function
-}
+};
+
+//event listener for form submission
+taskForm.addEventListener('submit', handleSubmission);
+
+//call the init function nto set up the initial state of the app
+init();
