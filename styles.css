@@ -47,9 +47,39 @@ button {
     margin-bottom: 30px;
 }
 
+table {
+    width: 90%;
+    margin: 0 auto;
+}
+
+tr {
+    width: 60%;
+    height: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+tr td {
+    height: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+}
+
+tr:last-child {
+    padding-bottom: 0;
+}
+
+.table-button {
+    padding-left: 40px;
+}
+
+.table-button:last-child {
+    padding-left: 0;
+}
+
 tr button {
-    align-items: center;
-    justify-content: center;
     width: 100px;
     height: 40px;
+    margin: 0 auto;
 }

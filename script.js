@@ -6,7 +6,6 @@
 
 //Section 2: App State Variables
 let tasks = [];
-
 //Section 3 Cached Element References
 const taskForm = document.getElementById("taskForm");
 const taskTable = document.getElementById("taskTable");
@@ -35,6 +34,33 @@ const handleSubmission = event => {
     render();
 };
 
+//function to remove tasks
+const removeTask = element => {
+    const row = element.parentElement.parentElement;
+    const taskName = row.querySelector("td").textContent;
+    const task = tasks.findIndex(task => {
+        return task.name === taskName;
+    });
+
+    //delete task from array
+    tasks.splice(task, 1);
+    console.log(tasks);
+    render();
+};
+
+//function to mark tasks as complete
+const markTaskComplete = element => {
+    const row = element.parentElement.parentElement;
+    const taskName = row.querySelector("td").textContent;
+    const task = tasks.findIndex(task => {
+        return task.name === taskName;
+    });
+    
+    //change task deadline to "COMPLETED"
+    tasks[task].deadline = "COMPLETED";
+    console.log(tasks);
+    render();
+};
 //function to render tasks in the table
 const render = () => {
     // TODO: Use array methods to create a new table row of data for each item in the arr
@@ -43,9 +69,9 @@ const render = () => {
         <td>${task.name}</td>
         <td>${task.description}</td>
         <td>${task.deadline}</td>
-        <td><button onclick="markTaskComplete(this)">Complete</button></td>
-        <td><button onclick="removeTask(this)">Remove</button></td>
-    `).join('');
+        <td class="table-button"><button onclick="markTaskComplete(this)">Complete</button></td>
+        <td class="table-button"><button onclick="removeTask(this)">Remove</button></td>
+    </tr>`).join('');
 };
 
 //function to initialize the table
@@ -57,6 +83,5 @@ const init = () => {
 
 //event listener for form submission
 taskForm.addEventListener('submit', handleSubmission);
-
 //call the init function nto set up the initial state of the app
 init();
